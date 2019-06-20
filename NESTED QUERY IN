@@ -28,3 +28,9 @@ WHERE client.branch_id=(
             WHERE branch.mgr_id = 102
             LIMIT 1  <--always limit 
 );
+
+
+Another option Query below should help you achieve what you want.
+
+select scountry, headofstate from data 
+where data.scountry like 'a%'and ttlppl>=100000
