@@ -1,0 +1,30 @@
+NESTED QUERY
+
+*find names of all employees who have sold over 30,000
+SELECT file_nameS.column_listA
+FROM file_nameS
+WHERE file_nameS.column_listB IN(
+
+            SELECT file_nameT.column_listA
+            FROM file_nameT
+            WHERE file_nameT.column_listB >30000;
+);
+
+*find all clients who are handled by the branch that micheal scott manages assume you know michael's id
+
+SELECT client.client_name
+FROM client
+WHERE client.branch_id=(
+            SELECT branch.branch_id
+            FROM branch
+            WHERE branch.mgr_id = 102;
+);  <---excute inner information first outter later
+
+SELECT client.client_name
+FROM client
+WHERE client.branch_id=(
+            SELECT branch.branch_id
+            FROM branch
+            WHERE branch.mgr_id = 102
+            LIMIT 1  <--always limit 
+);
