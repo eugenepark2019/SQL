@@ -1,0 +1,14 @@
+select albumid,count(trackid)from tracks group by albumid;
+
+select tracks.albumid,title,count(trackid) from tracks inner join albums on albums.albumid = tracks.AlbumId group by tracks.AlbumId;
+
+select tracks.albumid,title, count(trackid) from tracks inner join albums on albums.albumid =tracks.AlbumId group by tracks.AlbumId 
+having count(trackid) >15;
+
+select albumid, sum(milliseconds)lenght,sum(bytes)size from tracks group by albumid;
+
+select tracks.albumid ,title,min(milliseconds),max(milliseconds),round(avg(milliseconds),2) from tracks inner join albums 
+on albums.AlbumId = tracks.albumid group by tracks.albumid;
+
+select tracks.albumid ,title,min(milliseconds),max(milliseconds),round(avg(milliseconds),2) from tracks inner join albums 
+on albums.AlbumId = tracks.albumid group by tracks.albumid limit 15;
