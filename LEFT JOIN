@@ -1,0 +1,11 @@
+==left join==
+SELECT file_name.column_listA,file_name.column_listA,file_name.column_listB,file_name.column_listB,
+FROM file_nameA
+LEFT JOIN file_nameB
+ON file_nameA.columA_listA =file_nameB.column_listB <--Both column have same or simillar information
+
+ex)
+We can find the artists who do not have any albums by using the LEFT JOIN clause.
+We select artists and their corresponding albums.If an artist does not have any albums, the value of the albumid culumn is null.
+
+SELECT ARTISTS.ArtistId,albumid from artists left join albums on albums.ArtistId = artists.ArtistId order by albumid;
