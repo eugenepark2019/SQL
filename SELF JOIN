@@ -1,0 +1,3 @@
+select m.firstname ||''|| m.lastname as 'manager',
+e.firstname || '' || e.lastname as 'direct report' from employees e
+inner join employees m on m.employeeid = e.reportsto order by manager;
