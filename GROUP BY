@@ -18,3 +18,9 @@ select mediatypeid,genreid,count(trackid) from tracks group by mediatypeid,genre
 select mediatypeid,genreid,count(trackid) from tracks group by mediatypeid,genreid having count(trackid) > 25;
 
 select mediatypeid,genreid,count(trackid) from tracks group by mediatypeid,genreid having count(trackid) between 25 and 380;
+
+select albumid,count(trackid) from tracks group by albumid;
+
+select albumid,count(trackid) from tracks group by albumid having albumid = 1;
+
+select albumid,count(trackid) from tracks group by albumid having count(albumid) between 18 and 20 order by albumid;
