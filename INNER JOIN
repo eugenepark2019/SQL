@@ -17,3 +17,6 @@ select trackid,tracks.Name as track,albums.Title as album,artists.Name as artist
 from tracks inner join albums on albums.AlbumId = tracks.AlbumId
 inner join artists on artists.ArtistId = albums.ArtistId
 where artists.artistid = 10;
+
+SELECT DISTINCT E1.CITY,E1.FIRSTNAME || '' || e1.lastname AS fullname from employees e1
+inner join employees e2 on e2.city =e1.city and (e1.firstname <> e2.firstname and e1.lastname <> e2.lastname) order by e1.city;
