@@ -12,3 +12,9 @@ on albums.AlbumId = tracks.albumid group by tracks.albumid;
 
 select tracks.albumid ,title,min(milliseconds),max(milliseconds),round(avg(milliseconds),2) from tracks inner join albums 
 on albums.AlbumId = tracks.albumid group by tracks.albumid limit 15;
+
+select mediatypeid,genreid,count(trackid) from tracks group by mediatypeid,genreid;
+
+select mediatypeid,genreid,count(trackid) from tracks group by mediatypeid,genreid having count(trackid) > 25;
+
+select mediatypeid,genreid,count(trackid) from tracks group by mediatypeid,genreid having count(trackid) between 25 and 380;
