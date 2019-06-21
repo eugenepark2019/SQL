@@ -1,0 +1,66 @@
+1. INNER JOIN 
+
+예를 들어 '학생' 테이블과 '신청 과목' 테이블이 있을 때 '학생' 테이블의 'id' 컬럼, 
+
+'신청 과목' 테이블의 'student_id' 컬럼으로 조인을 한다고 해보자.
+
+학생 테이블에 id는 1번부터 1000번부터 있지만, 과목을 신청한 학생은 850명이다.
+
+한 사람당 한 과목만 신청했다고 하면 분명 '신청 과목' 테이블에는 150명의 student_id가 존재하지 않는다.
+
+이때 두 테이블을 Inner Join 하면 850명 학생들의 row들만 뜬다. 
+
+왜냐, Inner Join은 테이블 양쪽에 있는 key들의 row들만을 보여주기 때문이다.
+
+그래서 아래 사진에서는 Inner Join을 교집합으로 보여준 것이다. 
+
+위의 수염 사진도 보면, 위 아래 모두 겹치는 눈썹, 콧수염만 남아있고 
+
+위 아래가 겹치지 않는 머리카락, 턱수염은 없다. 
+
+2. LEFT, RIGHT (OUTER) JOIN 
+
+LEFT JOIN : 왼쪽 테이블의 rows는 모두 나오고, 오른쪽 테이블에서 key가 존재하지 않으면 Null 로 나온다.
+
+RIGHT JOIN : LEFT JOIN의 반대. 
+
+SELECT * FROM left_table lt 
+LEFT JOIN right_table rt ON lt.key = rt.key
+
+어느 것을 기준으로 LEFT, RIGHT라고 하는 걸까? 
+
+JOIN의 왼쪽에 있는 테이블을 기준으로 조인하면 LEFT JOIN이라고 하고, 
+
+JOIN의 오른쪽에 있는 테이블을 기준으로 조인하면 RIGHT JOIN이라고 한다. 
+
+
+하지만, JOIN의 왼쪽에 아무것도 없다? 그렇지 않다. 원래 저 쿼리문을 한줄로 표현하면 아래와 같다.
+
+평소에는 가독성을 위해 개행을 한 것뿐이다. 
+
+SELECT * FROM left_table lt LEFT JOIN right_table rt ON lt.key = rt.key
+ 
+
++ 만약, LEFT JOIN을 할 때 순수한 왼쪽 테이블만 보려면 오른쪽 테이블의 키들이 NULL이라는 조건절을 추가하면 된다. (RIGHT JOIN도 마찬가지) 이렇게 하면 오른쪽 테이블과 겹치는 key가 하나도 없는 순수한 왼쪽 테이블만 나온다. 
+
+
+수염짤로 나타내면 눈썹, 콧수염은 없고 오로지 턱수염만 남은 사진이 될 것이다. 
+
+where rt.key IS NULL
+ 
+
+3. FULL OUTER JOIN 
+
+
+위에 두가지 조인을 이해했으면 FULL OUTER JOIN은 이름만 길 뿐 이해하기 쉽다!
+
+왼쪽, 오른쪽 각자 key가 없는 부분에는 Null 값으로 나오고
+
+둘 다 key가 있으면 값이 나온다. 
+
+
+그냥 각 테이블에 key가 있든 없든, 빈 부분은 Null로 채워서 양쪽 테이블의 모든 행을 보여준다고 생각하면 된다.  
+
+
+
+
