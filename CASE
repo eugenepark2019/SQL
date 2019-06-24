@@ -1,0 +1,11 @@
+select customerid,
+       FirstName,
+       LastName,
+case country when 'USA'
+             then 'Domestic'
+             else 'Foreing'
+end customerGroup
+from customers
+order by
+LastName,
+FirstName;
