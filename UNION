@@ -1,0 +1,5 @@
+select firstname,lastname from employees
+union
+select firstname,lastname from customers
+order by firstname,lastname;
+
