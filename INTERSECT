@@ -1,0 +1,5 @@
+select customerid from customers 
+intersect
+select customerid
+from invoices
+order by customerid;
