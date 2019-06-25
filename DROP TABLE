@@ -1,0 +1,57 @@
+#DROP TABLE STATEMENT
+To remove a table in a database,you use SQLite DROP TABLE statement.(Perform implicit DELETE)
+Drop one table at a time.To remove muliple tables you need to issue multiple drop table statements,
+
+
+create table if not exists people(
+person_id integer primary key,
+first_name text,
+last_name text,
+address_id integer,
+foreign key(address_id)references addresses(address_id)
+);
+
+create table if not exists addresses(
+address_id integer primary key, 
+house_no text,
+street text,
+city text,
+postal_code text,
+country text);
+
+insert into addresses (
+house_no,
+street,
+city,
+postal_code,
+country
+)
+valueS(
+'3960',
+'North 1st Street',
+'San Jose',
+'95135',
+'USA'
+);
+
+INSERT INTO people(
+first_name,
+last_name,
+address_id
+)
+values
+('John','Doe','1');
+
+drop table addresses; --->constraint failed because this action violates the foreign key constraint
+
+To remove the addresses table, you have to 👍 
+1.First,disable foreign key constraints.
+2.Next, drop the addresses table
+3.Then,update the address_id in the people table to NULL values.
+4.After that,enable foreign key constraints.
+
+Pragma foreign_keys = off;
+drop table addresses;
+update people
+set address_id = NULL;
+PRAGMA foreign_keys = on;
