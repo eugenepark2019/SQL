@@ -1,0 +1,9 @@
+SELECT DISTINCT CITY FROM STATION WHERE MOD(ID,2) = 0; --->Orcle
+
+SELECT ID FROM YourTable WHERE (ID % 2) = 0 --displays evens
+SELECT ID FROM YourTable WHERE (ID % 2) <> 0 --displays odds 
+
+You might be able to get a higher id10t score using:
+SELECT * FROM myTable WHERE id LIKE '%[02468]'		-- even
+SELECT * FROM myTable WHERE id NOT LIKE '%[02468]'	-- odd
+
