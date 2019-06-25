@@ -1,0 +1,27 @@
+select albumiD,artistid,name,title from albums cross join artists order by name;
+select albums.AlbumId,albums.ArtistId,albums.Title,artists.ArtistId,artists.Name from albums left join artists using(artistid) union all
+select albums.AlbumId,albums.ArtistId,albums.Title,artists.ArtistId,artists.Name from artists left join albums using(artistid) where artistid;
+select m.firstname ||''|| m.lastname as 'manager',
+e.firstname || '' || e.lastname as 'direct report' from employees e
+inner join employees m on m.employeeid = e.reportsto order by manager;
+SELECT albumid,count(trackid) from tracks group by albumid;
+SELECT albumid,count(trackid) from tracks group by albumid ORDER BY COUNT(trackid);
+SELECT albumid,count(trackid) from tracks group by albumid HAVING COUNT(trackid)BETWEEN 18 AND 20 ORDER BY albumid;
+SELECT DISTINCT E1.CITY,E1.FIRSTNAME || '' || e1.lastname AS fullname from employees e1
+inner join employees e2 on e2.city =e1.city and (e1.firstname <> e2.firstname and e1.lastname <> e2.lastname) order by e1.city;
+select albumid,count(trackid)from tracks group by albumid;
+select tracks.albumid,title,count(trackid) from tracks inner join albums on albums.albumid = tracks.AlbumId group by tracks.AlbumId;
+select tracks.albumid,title, count(trackid) from tracks inner join albums on albums.albumid =tracks.AlbumId group by tracks.AlbumId having count(trackid) >15;
+select albumid, sum(milliseconds)lenght,sum(bytes)size from tracks group by albumid;
+select tracks.albumid ,title,min(milliseconds),max(milliseconds),round(avg(milliseconds),2) from tracks inner join albums on albums.AlbumId = tracks.albumid group by tracks.albumid;
+select tracks.albumid ,title,min(milliseconds),max(milliseconds),round(avg(milliseconds),2) from tracks inner join albums on albums.AlbumId = tracks.albumid group by tracks.albumid limit 15;
+select mediatypeid,genreid,count(trackid) from tracks group by mediatypeid,genreid;
+select mediatypeid,genreid,count(trackid) from tracks group by mediatypeid,genreid having count(trackid) > 25;
+select mediatypeid,genreid,count(trackid) from tracks group by mediatypeid,genreid having count(trackid) between 25 and 380;
+select albumid,count(trackid) from tracks group by albumid;
+select albumid,count(trackid) from tracks group by albumid having albumid = 1;
+select albumid,count(trackid) from tracks group by albumid having count(albumid) between 18 and 20 order by albumid;
+select tracks.AlbumId,title,sum(milliseconds) as lenght from tracks inner join albums on albums.AlbumId = tracks.AlbumId group by tracks.AlbumId having lenght >60000000;
+select customerid,firstname,lastname, case country when'USA' THEN 'Dosmetic' else 'Foreign' END CustomerGroup From customers order by FirstName,LastName;
+select trackid,name,case when milliseconds < 60000 then 'short' when milliseconds > 6000 and milliseconds <300000 then 'medium' else 'long' end category from tracks;
+select instr (FIRST_NAME,'a') from Worker where FIRST_NAME ='Amitabh';
